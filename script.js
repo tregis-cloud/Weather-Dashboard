@@ -69,38 +69,39 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       // Day One Forecast
-      var date = response.list[4].dt_txt;
+      //   var date = response.list[4].dt_txt;
+      var newDate = moment().add(1, "days").format("l");
       var humidity = response.list[4].main.humidity;
       var temp = response.list[4].main.temp;
-      $(".day-one-date").text(date);
+      $(".day-one-date").text(newDate);
       $(".day-one-temp").text("Temp: " + temp + " F");
       $(".day-one-humidity").text("Humidity: " + humidity + " %");
       // Day Two Forecast
-      var date = response.list[12].dt_txt;
+      var newDate = moment().add(2, "days").format("l");
       var humidity = response.list[12].main.humidity;
       var temp = response.list[12].main.temp;
-      $(".day-two-date").text(date);
+      $(".day-two-date").text(newDate);
       $(".day-two-temp").text("Temp: " + temp + " F");
       $(".day-two-humidity").text("Humidity: " + humidity + " %");
       //Day Three Forecast
-      var date = response.list[20].dt_txt;
+      var newDate = moment().add(3, "days").format("l");
       var humidity = response.list[20].main.humidity;
       var temp = response.list[20].main.temp;
-      $(".day-three-date").text(date);
+      $(".day-three-date").text(newDate);
       $(".day-three-temp").text("Temp: " + temp + " F");
       $(".day-three-humidity").text("Humidity: " + humidity + " %");
       //Day Four Forecast
-      var date = response.list[28].dt_txt;
+      var newDate = moment().add(4, "days").format("l");
       var humidity = response.list[28].main.humidity;
       var temp = response.list[28].main.temp;
-      $(".day-four-date").text(date);
+      $(".day-four-date").text(newDate);
       $(".day-four-temp").text("Temp: " + temp + " F");
       $(".day-four-humidity").text("Humidity: " + humidity + " %");
       //   Day Five Forecast
-      var date = response.list[36].dt_txt;
+      var newDate = moment().add(5, "days").format("l");
       var humidity = response.list[36].main.humidity;
       var temp = response.list[36].main.temp;
-      $(".day-five-date").text(date);
+      $(".day-five-date").text(newDate);
       $(".day-five-temp").text("Temp: " + temp + " F");
       $(".day-five-humidity").text("Humidity: " + humidity + " %");
     });
@@ -142,9 +143,10 @@ $(document).ready(function () {
   //Listner for the history seraches
   $(".city-btn").on("click", function (event) {
     event.preventDefault();
-    var city = $(this).attr("data-name");
+    // var city = $(this).attr("data-name");
+    var city = $(this).text();
     console.log(city);
-    //call searchfunction
+    cityWeather(city, APIKey);
   });
   function storeSearch() {
     localStorage.setItem("city", JSON.stringify(cities));
