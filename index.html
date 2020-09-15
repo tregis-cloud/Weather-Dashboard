@@ -28,7 +28,7 @@
           <h5>Search for a City:</h5>
           <input type="text" placeholder="Enter City..." id="city" />
           <input type="submit" id="search-button" value="Search" />
-          <div class="list-group">
+          <div class="list-group city-btn">
             <!-- <button
               type="button"
               class="list-group-item list-group-item-action"
@@ -36,14 +36,15 @@
           </div>
         </div>
         <ul class="look-at-bootstrap"></ul>
-        <!-- This is the righ colomn -->
+        <!-- This is the right colomn -->
         <div class="col-sm-8 right-column">
           <div class="city-summary">
-            <div class="city"></div>
+            <div class="city-name"></div>
+            <div id="icon"></div>
             <div id="cityTemp"></div>
             <div id="cityHumid"></div>
             <div id="cityWind"></div>
-            <div id="cityUV"></div>
+            <div class="cityUV"></div>
           </div>
           <div class="row"><h5>5 Day Forcast</h5></div>
           <div class="row">
