@@ -1,0 +1,14 @@
+/* .bar {
+  text-align: center;
+} */
+
+.col-sm-2 {
+  background-color: skyblue;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  text-size-adjust: 20%;
+}
