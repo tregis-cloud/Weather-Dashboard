@@ -69,13 +69,13 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       // Day One Forecast
-      //   var date = response.list[4].dt_txt;
       var newDate = moment().add(1, "days").format("l");
       var humidity = response.list[4].main.humidity;
       var temp = response.list[4].main.temp;
       $(".day-one-date").text(newDate);
       $(".day-one-temp").text("Temp: " + temp + " F");
       $(".day-one-humidity").text("Humidity: " + humidity + " %");
+
       // Day Two Forecast
       var newDate = moment().add(2, "days").format("l");
       var humidity = response.list[12].main.humidity;
@@ -83,6 +83,7 @@ $(document).ready(function () {
       $(".day-two-date").text(newDate);
       $(".day-two-temp").text("Temp: " + temp + " F");
       $(".day-two-humidity").text("Humidity: " + humidity + " %");
+
       //Day Three Forecast
       var newDate = moment().add(3, "days").format("l");
       var humidity = response.list[20].main.humidity;
@@ -90,6 +91,7 @@ $(document).ready(function () {
       $(".day-three-date").text(newDate);
       $(".day-three-temp").text("Temp: " + temp + " F");
       $(".day-three-humidity").text("Humidity: " + humidity + " %");
+
       //Day Four Forecast
       var newDate = moment().add(4, "days").format("l");
       var humidity = response.list[28].main.humidity;
@@ -97,6 +99,7 @@ $(document).ready(function () {
       $(".day-four-date").text(newDate);
       $(".day-four-temp").text("Temp: " + temp + " F");
       $(".day-four-humidity").text("Humidity: " + humidity + " %");
+
       //   Day Five Forecast
       var newDate = moment().add(5, "days").format("l");
       var humidity = response.list[36].main.humidity;

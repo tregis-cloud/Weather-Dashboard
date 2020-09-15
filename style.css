@@ -38,6 +38,19 @@
   justify-content: center;
 } */
 
+.low {
+  background-color: green;
+}
+.moderate {
+  background-color: yellow;
+}
+.high {
+  background-color: orangered;
+}
+.very-high {
+  background-color: red;
+}
+
 button {
   margin-top: 5px;
   margin-bottom: 5px;
