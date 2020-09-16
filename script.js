@@ -3,7 +3,7 @@ $(document).ready(function () {
   var APIKey = "7dca2ccb58435f03c75b86aee0974ae8";
   var date = moment().format("MM/ DD/ YYYY");
   var cities = JSON.parse(localStorage.getItem("city")) || [];
-  console.log;
+
   lastSearch();
   renderPastSerachButton();
 
@@ -33,7 +33,6 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
       // Logging the data in HTML
       var cityTemp = response.main.temp;
       var cityHumidity = response.main.humidity;
@@ -41,7 +40,7 @@ $(document).ready(function () {
       var icon = response.weather[0].icon;
       lat = response.coord.lat;
       lon = response.coord.lon;
-      console.log(icon);
+
       var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       $(".city-name").text(city + " " + "(" + date + ")");
       $("#icon").attr("src", iconurl);
@@ -120,12 +119,13 @@ $(document).ready(function () {
       $(".day-five-date").text(newDate);
       $(".day-five-temp").text("Temp: " + temp + " F");
       $(".day-five-humidity").text("Humidity: " + humidity + " %");
+
+      renderPastSerachButton();
+      storeSearch();
     });
   }
   //This functions gets the UV data grabbing lat and lon from ciyyWeather().
   function calculateUV(lat, lon) {
-    console.log(lat);
-    console.log(lon);
     var APIKey = "7dca2ccb58435f03c75b86aee0974ae8";
     var queryURL =
       "http://api.openweathermap.org/data/2.5/uvi?appid=" +
@@ -138,14 +138,12 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response.value);
       var uv = response.value;
       $(".cityUV").text("UV Index: " + uv);
     });
   }
   //   This function renders the last searched buttons
   function renderPastSerachButton() {
-    console.log(cities);
     // $(".city-btn").empty();
     $(".city-btn").html("");
     for (var i = 0; i < cities.length; i++) {
@@ -160,19 +158,14 @@ $(document).ready(function () {
   $(".city-btn").on("click", ".city", function (event) {
     event.preventDefault();
     var city = $(this).attr("data-name");
-    // var city = $(this).text();
-
-    console.log(city);
-    cityWeather(city, APIKey);
   });
   function storeSearch() {
     localStorage.setItem("city", JSON.stringify(cities));
   }
   function lastSearch() {
     if (cities[0] == "null") {
-      console.log("do nothing!");
+      return;
     } else {
-      console.log(cities[0]);
       cityWeather(cities[0], APIKey);
       fiveDayForecast(cities[0], APIKey);
     }
