@@ -38,16 +38,16 @@
   justify-content: center;
 } */
 
-.low {
+.green {
   background-color: green;
 }
-.moderate {
+.yellow {
   background-color: yellow;
 }
-.high {
+.orange {
   background-color: orangered;
 }
-.very-high {
+.red {
   background-color: red;
 }
 

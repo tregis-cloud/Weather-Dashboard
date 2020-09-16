@@ -11,6 +11,7 @@ $(document).ready(function () {
   $("#search-button").on("click", function (event) {
     event.preventDefault();
     var city = $("#city").val();
+    console.log(city);
     cities.push(city);
     cityWeather(city, APIKey);
     fiveDayForecast(city, APIKey);
@@ -120,15 +121,15 @@ $(document).ready(function () {
       $(".day-five-temp").text("Temp: " + temp + " F");
       $(".day-five-humidity").text("Humidity: " + humidity + " %");
 
-      renderPastSerachButton();
-      storeSearch();
+      //   renderPastSerachButton();
+      //   storeSearch();
     });
   }
   //This functions gets the UV data grabbing lat and lon from ciyyWeather().
   function calculateUV(lat, lon) {
     var APIKey = "7dca2ccb58435f03c75b86aee0974ae8";
     var queryURL =
-      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+      "https://api.openweathermap.org/data/2.5/uvi?appid=" +
       APIKey +
       "&lat=" +
       lat +
@@ -140,6 +141,27 @@ $(document).ready(function () {
     }).then(function (response) {
       var uv = response.value;
       $(".cityUV").text("UV Index: " + uv);
+      if (uv <= 2) {
+        $(".cityUV").removeClass("red");
+        $(".cityUV").removeClass("orange");
+        $(".cityUV").removeClass("yellow");
+        $(".cityUV").addClass("green");
+      } else if (uv > 2 && uv <= 5) {
+        $(".cityUV").removeClass("red");
+        $(".cityUV").removeClass("orange");
+        $(".cityUV").removeClass("green");
+        $(".cityUV").addClass("yellow");
+      } else if (uv > 5 && uv <= 7) {
+        $(".cityUV").removeClass("red");
+        $(".cityUV").removeClass("green");
+        $(".cityUV").removeClass("yellow");
+        $(".cityUV").addClass("orange");
+      } else if (uv > 7) {
+        $(".cityUV").removeClass("green");
+        $(".cityUV").removeClass("orange");
+        $(".cityUV").removeClass("yellow");
+        $(".cityUV").addClass("red");
+      }
     });
   }
   //   This function renders the last searched buttons
@@ -158,6 +180,9 @@ $(document).ready(function () {
   $(".city-btn").on("click", ".city", function (event) {
     event.preventDefault();
     var city = $(this).attr("data-name");
+    console.log(city);
+    cityWeather(city, APIKey);
+    fiveDayForecast(city, APIKey);
   });
   function storeSearch() {
     localStorage.setItem("city", JSON.stringify(cities));
