@@ -44,7 +44,7 @@ $(document).ready(function () {
       console.log(icon);
       var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       $(".city-name").text(city + " " + "(" + date + ")");
-      $("#icon").attr("src", iconurl);
+      $(".icon").attr("src", iconurl);
       $("#cityTemp").text("Temperature: " + cityTemp + " F");
       $("#cityHumid").text("Humidity: " + cityHumidity + " %");
       $("#cityWind").text("Wind Speed: " + cityWind + " MPH");

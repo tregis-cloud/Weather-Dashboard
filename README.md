@@ -2,7 +2,7 @@ Project Name: # Weather-Dashboard
 Description: This applications allows you to search for city weathe with a 5 day forcast.
 Installation: NA. The link to the website is : https://tregis-cloud.github.io/Weather-Dashboard/
 
-![WDB](./imagesWeatherDB.png)
+![](./images/WeatherDB.png)
 
 Usage/Tesing:
 WHEN I search for a city
