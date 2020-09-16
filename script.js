@@ -44,12 +44,10 @@ $(document).ready(function () {
       console.log(icon);
       var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       $(".city-name").text(city + " " + "(" + date + ")");
-      $(".icon").attr("src", iconurl);
+      $("#icon").attr("src", iconurl);
       $("#cityTemp").text("Temperature: " + cityTemp + " F");
       $("#cityHumid").text("Humidity: " + cityHumidity + " %");
       $("#cityWind").text("Wind Speed: " + cityWind + " MPH");
-      console.log(lat);
-      console.log(lon);
       calculateUV(lat, lon);
       renderPastSerachButton();
       storeSearch();
@@ -69,41 +67,56 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
       // Day One Forecast
+      var icon = response.list[4].weather[0].icon;
+      var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       var newDate = moment().add(1, "days").format("l");
       var humidity = response.list[4].main.humidity;
       var temp = response.list[4].main.temp;
+      $(".day-one-img").attr("src", iconurl);
       $(".day-one-date").text(newDate);
       $(".day-one-temp").text("Temp: " + temp + " F");
       $(".day-one-humidity").text("Humidity: " + humidity + " %");
 
       // Day Two Forecast
+      var icon = response.list[12].weather[0].icon;
+      var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       var newDate = moment().add(2, "days").format("l");
       var humidity = response.list[12].main.humidity;
       var temp = response.list[12].main.temp;
+      $(".day-two-img").attr("src", iconurl);
       $(".day-two-date").text(newDate);
       $(".day-two-temp").text("Temp: " + temp + " F");
       $(".day-two-humidity").text("Humidity: " + humidity + " %");
 
       //Day Three Forecast
+      var icon = response.list[20].weather[0].icon;
+      var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       var newDate = moment().add(3, "days").format("l");
       var humidity = response.list[20].main.humidity;
       var temp = response.list[20].main.temp;
+      $(".day-three-img").attr("src", iconurl);
       $(".day-three-date").text(newDate);
       $(".day-three-temp").text("Temp: " + temp + " F");
       $(".day-three-humidity").text("Humidity: " + humidity + " %");
 
       //Day Four Forecast
+      var icon = response.list[28].weather[0].icon;
+      var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       var newDate = moment().add(4, "days").format("l");
       var humidity = response.list[28].main.humidity;
       var temp = response.list[28].main.temp;
+      $(".day-four-img").attr("src", iconurl);
       $(".day-four-date").text(newDate);
       $(".day-four-temp").text("Temp: " + temp + " F");
       $(".day-four-humidity").text("Humidity: " + humidity + " %");
 
       //   Day Five Forecast
+      var icon = response.list[36].weather[0].icon;
+      var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       var newDate = moment().add(5, "days").format("l");
       var humidity = response.list[36].main.humidity;
       var temp = response.list[36].main.temp;
+      $(".day-five-img").attr("src", iconurl);
       $(".day-five-date").text(newDate);
       $(".day-five-temp").text("Temp: " + temp + " F");
       $(".day-five-humidity").text("Humidity: " + humidity + " %");
