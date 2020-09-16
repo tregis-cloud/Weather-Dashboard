@@ -3,7 +3,7 @@ $(document).ready(function () {
   var APIKey = "7dca2ccb58435f03c75b86aee0974ae8";
   var date = moment().format("MM/ DD/ YYYY");
   var cities = JSON.parse(localStorage.getItem("city")) || [];
-
+  console.log;
   lastSearch();
   renderPastSerachButton();
 
@@ -42,7 +42,7 @@ $(document).ready(function () {
       lat = response.coord.lat;
       lon = response.coord.lon;
       console.log(icon);
-      var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
       $(".city-name").text(city + " " + "(" + date + ")");
       $("#icon").attr("src", iconurl);
       $("#cityTemp").text("Temperature: " + cityTemp + " F");
@@ -58,7 +58,7 @@ $(document).ready(function () {
   //Creating function to retrieve 5 day forcast data
   function fiveDayForecast(city, APIKey) {
     var queryURL =
-      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
       "&appid=" +
       APIKey +
@@ -144,10 +144,11 @@ $(document).ready(function () {
     }
   }
   //Listner for the history seraches
-  $(".city-btn").on("click", function (event) {
+  $(".city-btn").on("click", ".city", function (event) {
     event.preventDefault();
-    // var city = $(this).attr("data-name");
-    var city = $(this).text();
+    var city = $(this).attr("data-name");
+    // var city = $(this).text();
+
     console.log(city);
     cityWeather(city, APIKey);
   });
